@@ -1,0 +1,32 @@
+<!-- header and footer are included using layouts -->
+<!-- use the EJS docs tags section for the <%- -%> info -->
+<!-- this inserts anything in the header.ejs file into this block of code  -->
+<%- include("header") -%>
+
+  <div class="box" id="heading">
+    <!-- EJS uses <%= %> to pass in objects -->
+    <!-- <%= %> is a tag.  There are different tags that do different things.  Check the EJS tags section to see more -->
+    <!-- kindOfDay is the variable being passed in.  So use kindOfDay as the object name in the app.js -->
+    <h1><%= listTitle %> </h1>
+  </div>
+
+
+  <div class="box">
+    <!-- the <% %> is needed for each line of JS inserted into this ejs file, this signifys that JS is being used -->
+    <!-- the <% %> is a different tag than the single <%= %> used for the newListItems being passed through -->
+    <!-- see the tags section of the EJS docs to determine which tag is needed -->
+    <% for (let i=0; i<newListItems.length; i++) { %>
+    <div class="item">
+      <input type="checkbox">
+      <p> <%= newListItems[i] %> </p>
+    </div>
+    <%  } %>
+
+    <form class="item" action="/" method="post">
+      <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
+      <button type="submit" name="list" value=<%= listTitle %>>+</button>
+    </form>
+  </div>
+
+
+<%- include("footer") -%>
